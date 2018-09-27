@@ -50,10 +50,10 @@ class App extends Component {
       persons:persons
     })
   }
-
   render() {
     const style={
-      backgroundColor:'white',
+      backgroundColor:'green',
+      color:'white',
       font:'inherit',
       border:'1px solid blue',
       padding:'8px',
@@ -61,6 +61,7 @@ class App extends Component {
     }
     let personsdiv=null;
     if(this.state.showPersons){
+      style.backgroundColor='red';
       personsdiv=(
         <div>
           {
@@ -87,6 +88,14 @@ class App extends Component {
           </div>
       )
     }
+    const classes=[];
+    if(this.state.persons.length<=2) {
+      classes.push('red');
+    }
+    if(this.state.persons.length<=1)
+    {
+      classes.push('bold');
+    }
     return (
       <div className="App">
         {/* <header className="App-header">
@@ -96,11 +105,12 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <h1>hello World!</h1>
-        <p>Hi,React App</p>
+        <h1 >hello World!</h1>
+        <p className={classes.join(" ")}>Hi,React App</p>
         {/* <button onClick={()=>this.switchNameHandler("newNames")}>更改状态值</button> */}
-        <button className="Btn" onClick={this.toggleHandler}>内容切换</button>
+        <button onClick={this.toggleHandler}>内容切换</button>
         {personsdiv}
+       
 
       </div>
     );

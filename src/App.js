@@ -9,7 +9,7 @@ class App extends Component {
       { id:1, name: "dongchao1", count: 50 },
       { id:2, name: "dongchao2", count: 51 },
       { id:3, name: "dongchao3", count: 52 },
-      { id:4, name: "dongchao4", count: 50 }
+      { id:4, name: "dongchao4", count: 58 }
 
     ],
     oterState: "anything",

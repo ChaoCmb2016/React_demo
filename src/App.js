@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Person from './Person/Person';
+import Persons from './components/Persons/Persons';
+import Myheader from './components/Header/Header'
 
 class App extends Component {
   state = {
@@ -51,66 +52,19 @@ class App extends Component {
     })
   }
   render() {
-    const style={
-      backgroundColor:'green',
-      color:'white',
-      font:'inherit',
-      border:'1px solid blue',
-      padding:'8px',
-      cursor:'pointer'
-    }
-    let personsdiv=null;
+    
+    let persons=null;
     if(this.state.showPersons){
-      style.backgroundColor='red';
-      personsdiv=(
-        <div>
-          {
-            this.state.persons.map((person,index)=>{
-              return <Person 
-              myclick={()=>this.deletePersonHandler(index)}
-              changed={(event)=>this.nameChangeHandler(event,person.id)}
-              key={index}
-              name={person.name} 
-              count={person.count}/>
-            })
-          }
-            {/* <Person
-              myclick={this.switchNameHandler.bind(this, "missu")}
-              name={this.state.persons[0].name}
-              count={this.state.persons[0].count} />
-  
-            <Person
-              changed={this.nameChangeHandler}
-              name={this.state.persons[1].name}
-              count={this.state.persons[1].count} />
-            <Person name={this.state.persons[2].name} count={this.state.persons[2].count}>
-              非常感谢大家支持我的工作！</Person> */}
-          </div>
-      )
-    }
-    const classes=[];
-    if(this.state.persons.length<=2) {
-      classes.push('red');
-    }
-    if(this.state.persons.length<=1)
-    {
-      classes.push('bold');
+      persons=<Persons persons={this.state.persons}
+                      clicked={this.deletePersonHandler}
+                      changed={this.nameChangeHandler}  />
     }
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        <h1 >hello World!</h1>
-        <p className={classes.join(" ")}>Hi,React App</p>
-        {/* <button onClick={()=>this.switchNameHandler("newNames")}>更改状态值</button> */}
-        <button onClick={this.toggleHandler}>内容切换</button>
-        {personsdiv}
-       
+       <Myheader 
+       persons={this.state.persons} myclicked={this.toggleHandler}/>
+        
+       {persons}
 
       </div>
     );
@@ -119,3 +73,8 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+

@@ -4,18 +4,31 @@ import './App.css';
 import Persons from './components/Persons/Persons';
 import Myheader from './components/Header/Header'
 
+//有状态组件
 class App extends Component {
-  state = {
-    persons: [
-      { id:1, name: "dongchao1", count: 50 },
-      { id:2, name: "dongchao2", count: 51 },
-      { id:3, name: "dongchao3", count: 52 },
-      { id:4, name: "dongchao4", count: 58 }
 
-    ],
-    oterState: "anything",
-    showPersons: false
+  constructor(props){
+    super(props);
+    console.log("[App.js] constructor is running ...",props);
+    this.state={
+      persons: [
+        { id:1, name: "dongchao1", count: 50 },
+        { id:2, name: "dongchao2", count: 51 },
+        { id:3, name: "dongchao3", count: 52 },
+        { id:4, name: "dongchao4", count: 58 }
+  
+      ],
+      oterState: "anything",
+      showPersons: false
+    }
   }
+  //componentWillMount
+  componentWillMount(){
+   console.log("[App.js] componentWillMount is running ...",this.props)
+  }
+  componentDidMount(){
+    "[App.js] componentDidMount is running ...",this.props}
+
   switchNameHandler = (newName) => {
     this.setState({
       persons: [
@@ -61,7 +74,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-       <Myheader 
+       <Myheader title={this.props.title}
        persons={this.state.persons} myclicked={this.toggleHandler}/>
         
        {persons}

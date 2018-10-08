@@ -24,7 +24,7 @@ const Myheader = (props) => {
 
 
     return (<div className={classes.Header}>
-        <h1 >hello World!</h1>
+        <h1 >hello {props.title}</h1>
         <p className={myclasses.join(" ")}>Hi,React App</p>
 
         <button onClick={props.myclicked}>内容切换</button>

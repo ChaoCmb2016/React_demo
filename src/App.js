@@ -9,7 +9,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    console.log("[App.js] constructor is running ...",props);
+    console.log("[App.js] constructor is running ...",  props);
     this.state={
       persons: [
         { id:1, name: "dongchao1", count: 50 },
